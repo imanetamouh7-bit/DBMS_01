@@ -466,21 +466,32 @@ EOF
 
 > **Screenshot 6:** Take a screenshot showing the output of the Task 3 SQLite query — the four rows with sensor statistics — and insert it here.
 >
-> `[insert screenshot]`
+![Screenshot 6](screenshot6.png)
 
 ### Questions for Task 3
 
 **Question 3.1:** The `awk` solution initialises `min=9999` and `max=-9999`. What would happen if all temperature values in the dataset were greater than 9999? How could the initialisation be made more robust?
 
-> *Your answer:*
+The answer: If all values are bigger than 9999, then min stays 9999 and the result is wrong.
+A better way is to use the first real value as start value.
 
 **Question 3.2:** The SQL solution uses `GROUP BY sensor_id`. What would the query return *without* this clause — i.e. if you ran `SELECT sensor_id, MIN(value_celsius), MAX(value_celsius), ROUND(AVG(value_celsius), 1) FROM readings`? Try it and describe the result.
 
-> *Your answer:*
+The answer: Without GROUP BY, SQL gives only one row.
+It shows the min, max, and average of all sensors together, not for each sensor.
+The sensor_id is then not really useful.
 
 **Question 3.3:** Extend the SQL query with an additional column `COUNT(*) AS num_readings` that shows the total number of measurements for each sensor. Write the complete extended query here.
 
-> *Your answer (extended SQL query):*
+The answer: 
+SELECT sensor_id,
+       MIN(value_celsius) AS min_temp,
+       MAX(value_celsius) AS max_temp,
+       ROUND(AVG(value_celsius), 1) AS avg_temp,
+       COUNT(*) AS num_readings
+FROM readings
+GROUP BY sensor_id
+ORDER BY sensor_id;
 
 ---
 
@@ -491,22 +502,32 @@ After completing all three tasks, answer the following questions:
 **Question A — Writing effort:**
 Which approach was easier to write correctly on the first try? Explain which properties of each language contributed to this.
 
-> *Your answer:*
+The SQL approach was easier to write.
+It is short and clear.
+In shell, I need more commands like grep, cut, sort, and awk.
+So shell is harder and easier to make mistakes.
 
 **Question B — Extensibility:**
 What would you need to change in the shell solution if a fifth sensor `T05` were added? What about the SQL solution? Which approach scales better — and why?
 
-> *Your answer:*
+In the shell solution, I must add T05 to the loop or file pattern.
+In the SQL solution, I do not need to change much if the new data is in the table.
+SQL scales better because it works with all rows in the table automatically.
 
 **Question C — Performance:**
 The shell solution reads files from disk on every invocation. A database can cache frequently queried data in memory. What does this mean for performance with 10 000 sensors and multi-year measurement data?
 
-> *Your answer:*
+With 10 000 sensors and many years of data, the shell solution becomes slow.
+It reads the files again and again from disk.
+A database is faster because it can cache data in memory and optimize the query.
 
 **Question D — Declarative vs. imperative:**
 SQL is called a *declarative* language: you describe *what* you want, not *how* to compute it. Bash/awk, by contrast, are *imperative*: you write step by step how the result is to be computed. In which of the three tasks did you feel this difference most clearly? Justify your choice.
 
-> *Your answer:*
+I felt this most clearly in Task 3.
+In shell, I had to write many steps for min, max, and average.
+In SQL, I only wrote MIN, MAX, and AVG.
+So SQL was easier and more clear.
 
 > **Screenshot 7:** Take a final screenshot of your terminal showing the SQLite prompt with a query of your own invention on the `readings` table — one you came up with yourself that goes beyond the tasks above — and insert it here.
 >
