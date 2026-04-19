@@ -268,7 +268,8 @@ EOF
 
 > **Screenshot 4:** Take a screenshot showing the output of the Task 1 SQLite query (the first and last few rows are sufficient), and insert it here.
 >
-> `[insert screenshot]`
+![Screenshot 4](screenshot4.png)
+![Screenshot 4](screenshot4_2.png)
 
 ### Questions for Task 1
 
