@@ -362,7 +362,7 @@ EOF
 
 > **Screenshot 5:** Take a screenshot showing the output of the Task 2 SQLite query and insert it here.
 >
-> `[insert screenshot]`
+![Screenshot 5](screenshot5.png)
 
 ### Questions for Task 2
 
