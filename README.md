@@ -199,7 +199,7 @@ echo "Import complete."
 
 > **Screenshot 3:** Take a screenshot showing the successful execution of the import script and the result of the `COUNT(*)` query, and insert it here.
 >
-> `[insert screenshot]`
+![Screenshot 3](screenshot3.png)
 
 ---
 
