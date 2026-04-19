@@ -61,7 +61,7 @@ If any of the above commands return `command not found`, resolve the installatio
 
 > **Screenshot 1:** Take a screenshot of your terminal showing all four successful version checks and insert it here.
 >
-> `[insert screenshot]`
+![Screenshot 1](screenshot1.png)
 
 ---
 
