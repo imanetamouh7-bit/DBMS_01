@@ -277,15 +277,20 @@ Answer the following questions in your own words and add your answers directly b
 
 **Question 1.1:** Why is `grep -v "^timestamp"` needed in the shell solution even though the files are already filtered with `grep -h "T02"`? Could this step be omitted? Justify your answer.
 
-> *Your answer:*
+The Answer: we use grep -v "^timestamp" to remove the header line.
+Each file has a header with "timestamp". If we do not remove it, it can appear in the result.
+So it is better to keep it. It shouldn't be removed.
 
 **Question 1.2:** The shell solution uses `sensordata/T02_*.csv` as a file pattern, even though `grep -h "T02"` already filters for `T02`. Why is the file pattern still important — and what would happen if you used `sensordata/*.csv` instead?
 
-> *Your answer:*
+the answer: is important because it uses only files from T02.  
+If we use sensordata/*.csv, it reads all files (T01, T02, T03, T04).
+The result is still correct, but it is slower and not clean.
 
 **Question 1.3:** The SQL solution uses `ORDER BY timestamp` even though `timestamp` is stored as type `TEXT`. Why does chronological sorting still work correctly? Under what condition would it fail?
 
-> *Your answer:*
+The answer: It works because the time is in format yyyy-mm-dd.
+This fromat is good for sorting. It fails if the format is different, for example dd-mm-yyyy.
 
 ---
 
