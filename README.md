@@ -531,7 +531,7 @@ So SQL was easier and more clear.
 
 > **Screenshot 7:** Take a final screenshot of your terminal showing the SQLite prompt with a query of your own invention on the `readings` table — one you came up with yourself that goes beyond the tasks above — and insert it here.
 >
-> `[insert screenshot]`
+![Screenshot 7](screenshot7.png)
 
 ---
 
